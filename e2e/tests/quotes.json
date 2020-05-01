@@ -1,0 +1,55 @@
+{
+    "describe": "Quotes Add flow test",
+    "flow": [
+      {
+        "it": "should add new quote",
+        "steps": [
+          {
+            "type": "action",
+            "element": {
+              "by": "id",
+              "value": "addQuoteButton"
+            },
+            "effect": {
+              "key": "tap",
+              "value": ""
+            }
+          },
+          {
+            "type": "action",
+            "element": {
+              "by": "id",
+              "value": "authorName"
+            },
+            "effect": {
+              "key": "typeText",
+              "value": "TestAuthor"
+            }
+          },
+          {
+            "type": "action",
+            "element": {
+              "by": "id",
+              "value": "quoteText"
+            },
+            "effect": {
+              "key": "typeText",
+              "value": "A test quote text is being written."
+            }
+          },
+          {
+            "type": "action",
+            "element": {
+              "by": "id",
+              "value": "saveButton"
+            },
+            "effect": {
+              "key": "tap",
+              "value": ""
+            }
+          }
+        ]
+      }
+    ]
+  }
+  

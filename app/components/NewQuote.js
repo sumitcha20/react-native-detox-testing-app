@@ -91,12 +91,14 @@ export default function NewQuote(props) {
             <SafeAreaView style={styles.flex}>
                 <View style={styles.flex}>
                     <TextInput
+                        testID="authorName"
                         onChangeText={(text) => setAuthor(text)}
                         placeholder={"Author"}
                         autoFocus={true}
                         style={[styles.author]}
                         value={author}/>
                     <TextInput
+                        testID="quoteText"
                         multiline={true}
                         onChangeText={(text) => setText(text)}
                         placeholder={"Enter Quote"}
@@ -110,7 +112,7 @@ export default function NewQuote(props) {
                         <Text style={[styles.count, (MAX_LENGTH - text.length <= 10) && {color: "red"}]}> {MAX_LENGTH - text.length}</Text>
                     </View>
                     <View style={{flex: 1, alignItems: "flex-end"}}>
-                        <TouchableHighlight style={[styles.button]} disabled={disabled} onPress={onSave}
+                        <TouchableHighlight testID="saveButton" style={[styles.button]} disabled={disabled} onPress={onSave}
                                             underlayColor="rgba(0, 0, 0, 0)">
                             <Text style={[styles.buttonText, {color: disabled ? "rgba(255,255,255,.5)" : "#FFF"}]}>
                                 Save

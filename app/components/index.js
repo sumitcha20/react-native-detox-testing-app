@@ -8,13 +8,13 @@ const AppStack = createStackNavigator({
     Home:{
         screen: HomeScreen,
         navigationOptions: ({ navigation }) => ({
-            title: `Home`,
+            title: `Quotes`,
         }),
     },
     NewQuote:{
         screen: NewQuoteScreen,
         navigationOptions: ({ navigation }) => ({
-            title: `New Quote`,
+            title: `Add New Quote`,
         }),
     }
 });

@@ -45,7 +45,7 @@ export default function Home(props) {
 
     const renderItem = ({item, index}) => {
         return (
-            <ListItem item={item} index={index} navigation={navigation}/>
+            <ListItem testID="quoteList" item={item} index={index} navigation={navigation}/>
         )
     };
 
@@ -65,7 +65,8 @@ export default function Home(props) {
                     renderItem={renderItem}
                     keyExtractor={(item, index) => `quotes_${index}`}/>
 
-                <TouchableHighlight style={styles.floatingButton}
+                <TouchableHighlight testID="addQuoteButton"
+                                    style={styles.floatingButton}
                                     underlayColor='#ff7043'
                                     onPress={() => navigation.navigate('NewQuote', {title:"New Quote"})}>
                     <Text style={{fontSize: 25, color: 'white'}}>+</Text>

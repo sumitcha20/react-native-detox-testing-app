@@ -17,6 +17,7 @@ beforeAll(async () => {
 
 beforeEach(async () => {
   await adapter.beforeEach();
+  await device.reloadReactNative()
 });
 
 afterAll(async () => {
