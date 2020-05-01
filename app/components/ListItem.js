@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, Animated } from 'react-native';
 import {RectButton} from 'react-native-gesture-handler';
 import Swipeable from 'react-native-gesture-handler/Swipeable';
 
-let colours = ["#ff8e42", "#4F6384"];
+let colours = ["#009CF0", "#05E2F4"];
 
 export default function ListItem ({item, index, navigation}){
     const inputEl = useRef(null);
