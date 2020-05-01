@@ -1,21 +1,18 @@
-const parseSpecJson = (specJson) => {
-  describe(specJson.describe, () => {
-    for (let i = 0; i < specJson.flow.length; i++) {
-      const flow = specJson.flow[i];
-      it(flow.it, async () => {
-        for (let j = 0; j < flow.steps.length; j++) {
-          const step = flow.steps[j];
-          const targetElement = element(by[step.element.by](step.element.value));
-          if (step.type === 'assertion') {
-            await expect(targetElement)[step.effect.key](step.effect.value);
-          } else {
-            await targetElement[step.effect.key](step.effect.value);
-          }
-        }
-      });
-    }
+describe('Quotes Add flow test', () => {
+  beforeEach(async () => {
+    //await device.reloadReactNative();
   });
-};
+  it('should not exists the test author text', async()=>{
+    await expect(element(by.text('TestAuthor'))).toNotExist();
+  });
+  it('should add new quote', async () => {
+    await element(by.id('addQuoteButton')).tap();
+    await element(by.id('authorName')).typeText('TestAuthor');
+    await element(by.id('quoteText')).typeText('A test quote text is being written.');
+    await element(by.id('saveButton')).tap();
+  });
+  it('should exists the test author text', async()=>{
+    await expect(element(by.text('TestAuthor'))).toBeVisible();
+  });
+});
 
-
-parseSpecJson(require('./tests/quotes.json'));
