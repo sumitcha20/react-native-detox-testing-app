@@ -17,10 +17,12 @@ export default function ListItem ({item, index, navigation, onDelete, onEdit}){
         });
         return (
             <View style={styles.buttons}>
-                <RectButton onPress={() =>  {
-                     inputEl.current.close();
-                     onEdit(item);
-                }}>
+                <RectButton 
+                    testID="editButton"
+                    onPress={() =>  {
+                        inputEl.current.close();
+                        onEdit(item);
+                    }}>
                     <View style={[styles.rightAction, styles.editAction]}>
                         <Animated.Text style={[styles.actionText, { transform: [{ scale }] }]}>
                             Edit
@@ -51,13 +53,19 @@ export default function ListItem ({item, index, navigation, onDelete, onEdit}){
     }
 
     return (
-        <Swipeable  ref={inputEl}
+        <Swipeable 
+       
+        ref={inputEl}
             renderRightActions={(progress, dragX) => (
                 <RightActions progress={progress} dragX={dragX} item={item}/>
             )}>
-            <View style={styles.row}>
-                <View style={[styles.container, {backgroundColor: random()}]}>
-                    <Text style={styles.quote}>
+            <View
+                testID="swipeRight"
+                style={styles.row}>
+                <View 
+                    style={[styles.container, {backgroundColor: random()}]}>
+                    <Text
+                         style={styles.quote}>
                         {item.text}
                     </Text>
                     <Text style={styles.author}>
