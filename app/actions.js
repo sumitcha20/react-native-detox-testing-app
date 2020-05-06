@@ -14,3 +14,15 @@ export const addQuote = (quote) => ({
     type: ADD_QUOTE,
     data: {quote}
 });
+
+// Update Quote - UPDATE (U)
+export const updateQuote = (quote) => ({
+    type: UPDATE_QUOTE,
+    data: {quote}
+});
+
+// Delete Quote - DELETE (D)
+export const deleteQuote = (id) => ({
+    type: DELETE_QUOTE,
+    data: {id}
+});

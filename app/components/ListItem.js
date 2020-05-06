@@ -6,7 +6,7 @@ import Swipeable from 'react-native-gesture-handler/Swipeable';
 
 let colours = ["#009CF0", "#05E2F4"];
 
-export default function ListItem ({item, index, navigation}){
+export default function ListItem ({item, index, navigation, onDelete, onEdit}){
     const inputEl = useRef(null);
 
     const RightActions = ({ progress, dragX, onPress, item}) => {
@@ -18,6 +18,8 @@ export default function ListItem ({item, index, navigation}){
         return (
             <View style={styles.buttons}>
                 <RectButton onPress={() =>  {
+                     inputEl.current.close();
+                     onEdit(item);
                 }}>
                     <View style={[styles.rightAction, styles.editAction]}>
                         <Animated.Text style={[styles.actionText, { transform: [{ scale }] }]}>
@@ -26,6 +28,8 @@ export default function ListItem ({item, index, navigation}){
                     </View>
                 </RectButton>
                 <RectButton onPress={() => {
+                    inputEl.current.close();
+                    onDelete(item.id)
                 }}>
                     <View style={[styles.rightAction, styles.deleteAction]}>
                         <Animated.Text style={[styles.actionText, { transform: [{ scale }] }]}>

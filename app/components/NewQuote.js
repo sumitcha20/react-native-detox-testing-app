@@ -6,16 +6,16 @@ import {
     Text,
     TextInput,
     TouchableHighlight,
-    View,
-    AsyncStorage
+    View
 } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import {useDispatch} from 'react-redux';
 import {Header} from 'react-navigation-stack';
 
 import axios from "axios";
 
-import {addQuote} from "../actions";
+import {addQuote, updateQuote} from "../actions";
 
 
 const MAX_LENGTH = 250;
@@ -62,6 +62,8 @@ export default function NewQuote(props) {
                 }
                 AsyncStorage.setItem('quotes', JSON.stringify(quotes), () => {
                     if (!edit) dispatch(addQuote(quote_));
+                    else dispatch(updateQuote(quote_));
+
                     navigation.goBack();
                 });
             }
