@@ -19,6 +19,10 @@ describe('Quotes Add flow test', () => {
      await element(by.id('editButton')).atIndex(0).tap();
   });
 
+  it('should empty the current quote text', async () => {
+    await element(by.id('authorName')).clearText();
+    await element(by.id('quoteText')).clearText();
+  });
   it('should update the quote quote', async () => {
     await element(by.id('authorName')).typeText('TestAuthor');
     await element(by.id('quoteText')).typeText('A test quote text is being written.');
