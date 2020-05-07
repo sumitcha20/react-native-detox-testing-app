@@ -1,3 +1,7 @@
+const fetch = require('node-fetch');
+const {writeFile} = require('fs');
+const fs = require('fs');
+const jestExpect = require('expect');
 describe('Quotes Add flow test', () => {
   beforeEach(async () => {
     //await device.reloadReactNative();
@@ -27,6 +31,16 @@ describe('Quotes Add flow test', () => {
     await element(by.id('authorName')).typeText('TestAuthor');
     await element(by.id('quoteText')).typeText('A test quote text is being written.');
     await element(by.id('saveButton')).tap();
+  });
+  
+  it('should download a file', async ()=>{
+    await fetch('https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf')
+    .then(x => x.arrayBuffer())
+    .then(x => writeFile('dummy.pdf', Buffer.from(x)))
+    .then(async (x) =>{
+      var stats = fs.statSync('dummy.pdf');
+      await jestExpect(typeof stats).toBe('object');
+    });
   });
 });
 
