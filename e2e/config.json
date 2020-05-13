@@ -1,6 +1,19 @@
 {
-    "setupFilesAfterEnv": ["./init.js"],
+    "setupFilesAfterEnv": [
+        "./init.js"
+    ],
     "testEnvironment": "node",
-    "reporters": ["detox/runners/jest/streamlineReporter"],
+    "reporters": [
+        "detox/runners/jest/streamlineReporter",
+        [
+            "../node_modules/jest-html-reporter",
+            {
+                "pageTitle": "Test Report",
+                "outputPath": "./test-report.html",
+                "includeFailureMsg": true,
+                "append": true
+            }
+        ]
+    ],
     "verbose": true
 }
